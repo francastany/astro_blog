@@ -1,0 +1,89 @@
+---
+import FormattedDate from '../../src/components/FormattedDate.astro';
+
+const post = Astro.props
+---
+
+<article>
+    <a href={`/blog/${post.slug}`}>
+        <img src={post.data.heroImage} alt={post.id}>
+        <div>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <span>
+                <FormattedDate date={post.data.pubDate}/>
+            </span>
+        </div>
+    </a>
+</article>
+
+<style>
+    article {
+        border-radius: .5rem;
+        padding: .5rem;
+        height: 100%;
+        max-height: 200px;
+        overflow: hidden;
+        margin-right: .5rem;
+        transition: background 200ms;
+
+        a {
+            height: 100%;
+            color: rgb(50, 50, 50);
+            text-decoration: none;
+            display: flex;
+            align-items: stretch;
+
+            img {
+                margin: 0;
+                padding: 0;
+                border-radius: 0;
+                object-fit: cover;
+                border-radius: 8px;
+                /* object-position: center; */
+                width: 40%;
+                transition: all 200ms;
+            }
+            &:hover img{
+                opacity: .85;
+            }
+
+            div {
+                padding: 1.5rem 1rem;
+                flex-grow: 1;
+
+                h3 {
+                    color: rgb(20, 20, 20);
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    font-size: 1.1em;
+                    margin-bottom: 14px;
+                    text-decoration: underline transparent;
+    		        transition: text-decoration 200ms ease;
+                }
+                p {
+                    font-size: .7em;
+                    margin-bottom: 4px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    line-height: 1.2;
+                }
+                span {
+                    font-style: italic;
+			        font-size: .7em;
+		        }
+            }
+        }
+        &:hover {
+            background-color: #f1f1f1a6;
+        }
+        
+        &:hover div h3 {
+			text-decoration-color: #2335ffb0
+		}
+    }
+</style>

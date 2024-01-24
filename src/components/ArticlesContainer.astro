@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content"
+import FormattedDate from "./FormattedDate.astro";
+import ArticleCard from "./ArticleCard.astro"
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const articles = posts.slice(3, 9)
+
+---
+
+<section>
+    {
+        articles.map((post) => (
+            <ArticleCard {...post} />
+        ))
+    }
+</section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+</style>

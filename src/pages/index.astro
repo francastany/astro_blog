@@ -3,6 +3,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FeaturedGrid from '../components/FeaturedGrid.astro';
+import Aside from '../components/Aside.astro'
+import ArticlesContainer from '../components/ArticlesContainer.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -15,6 +17,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Header title={SITE_TITLE} />
 		<main>
 			<FeaturedGrid />
+			<section class="content">
+				<ArticlesContainer />
+				<Aside />
+			</section>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
 				template serves as a lightweight, minimally-styled starting point for anyone looking to build
@@ -51,5 +57,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style>
-	
+	.content {
+		margin: 2rem 0;
+		display: grid;
+		grid-template-columns: 1fr .4fr;
+	}
 </style>

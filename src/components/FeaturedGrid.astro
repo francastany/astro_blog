@@ -8,7 +8,6 @@ const latest = posts.splice(0, 3)
 
 ---
 
-<h1>Últimas Noticias</h1>
 	<section class="latest_news">
 	    <article class="latest">
 			<a href=`/blog/${latest[0].slug}`>
@@ -24,6 +23,7 @@ const latest = posts.splice(0, 3)
 			<a href=`/blog/${latest[1].slug}`>
 				<img src={latest[1].data.heroImage} alt={latest[1].data.title}>
 				<h3>{latest[1].data.title}</h3>
+				<p>{latest[1].data.description}</p>
 				<hr>
 				<span><time datetime=`${latest[1].data.pubDate}`>{latest[1].data.pubDate.toLocaleDateString()}</time></span>
 			</a>
@@ -32,6 +32,7 @@ const latest = posts.splice(0, 3)
 			<a href=`/blog/${latest[2].slug}`>
 				<img src={latest[2].data.heroImage} alt={latest[2].data.title}>
 				<h3>{latest[2].data.title}</h3>
+				<p>{latest[2].data.description}</p>
 				<hr>
 				<span><time datetime=`${latest[2].data.pubDate}`>{latest[2].data.pubDate.toLocaleDateString()}</time></span>
 			</a>
@@ -40,7 +41,8 @@ const latest = posts.splice(0, 3)
 
 <style>
     .latest_news {
-		margin: 2rem 0;
+		/* margin: .rem 0; */
+		overflow: hidden;
 		display: grid;
 		grid-template-columns: .7fr .3fr;
 		grid-template-rows: 1fr 1fr;
@@ -49,12 +51,22 @@ const latest = posts.splice(0, 3)
 	}
 
 	.latest {
+		height: 100%;
+		cursor: pointer;
+		&:hover{
+			img {
+				opacity: .8;
+			}
+			h2 {
+				text-decoration-color: #2335ffb0
+			}
+		}
 		grid-area: 1 / 1 / 3 / 2;
 		img {
 			transition: opacity 200ms;
 		}
 		h2 {
-			max-width: 95%;
+			/* max-width: 95%; */
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
 			-webkit-line-clamp: 2;
@@ -62,7 +74,7 @@ const latest = posts.splice(0, 3)
 			font-size: 1.2em;
 			text-decoration: underline transparent;
     		transition: text-decoration 300ms ease;
-			/* text-wrap: balance; */
+			text-wrap: pretty;
 		}
 		p {
 			max-width: 95%;
@@ -77,14 +89,6 @@ const latest = posts.splice(0, 3)
 		}
 		a {
 			text-decoration: none;
-			&:hover{
-				img {
-					opacity: .8;
-				}
-				h2 {
-					text-decoration-color: #2335ffb0
-				}
-			}
 		}
 		hr {
 			margin: .25em 0 0 0;
@@ -103,20 +107,22 @@ const latest = posts.splice(0, 3)
 	}
 
 	.second-latest, .third-latest {
+		cursor: pointer;
+		&:hover{
+			img {
+				opacity: .8;
+			}
+			h3 {
+				text-decoration-color: #2335ffb0
+			}
+		}
 		img {
 			transition: opacity 250ms;
             min-height: 150px;
 		}
 		a {
 			text-decoration: none;
-			&:hover{
-				img {
-				opacity: .8;
-				}
-				h3 {
-					text-decoration-color: #2335ffb0
-				}
-			}
+			
 		}
 		h3 {
 			display: -webkit-box;
@@ -129,13 +135,23 @@ const latest = posts.splice(0, 3)
 			text-decoration: underline transparent;
     		transition: text-decoration 200ms ease;
 		}
+		p{
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+			overflow: hidden;
+			max-width: 95%;
+			color: #717171;
+			font-size: .7em;
+			margin: 0;
+		}
 		hr {
-			margin: .25em 0 0 0;
+			margin: 0;
 		}
 		span {
-			font-style: italic;
-			color: #8f8f8f;
 			font-size: .6em;
+			color: #8f8f8f;
+			font-style: italic;
 		}
 	}
 

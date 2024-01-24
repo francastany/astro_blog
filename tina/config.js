@@ -41,6 +41,13 @@ export default defineConfig({
             required: true,
           },
           {
+            type: "string",
+            name: "tags",
+            label: "Tags",
+            list: true,
+            required: false,
+          },
+          {
             label: "Author",
             name: "author",
             type: "reference",
