@@ -1,0 +1,18 @@
+---
+import { API_KEY_FOOTBALL } from "../consts"
+const getData = async() => {
+    await fetch("https://v3.football.api-sports.io/standings?league=1032&season=2024", {
+        method: 'GET',
+        headers: {
+		"x-rapidapi-host": "v3.football.api-sports.io",
+		"x-rapidapi-key": `${API_KEY_FOOTBALL}`
+	    }
+    })
+    .then(response => {
+	    console.log(response);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+---

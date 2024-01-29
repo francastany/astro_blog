@@ -49,13 +49,19 @@ import { SITE_TITLE } from '../consts';
 </header>
 <style>
 	header {
-		max-width: 900px;
-		margin: .6em auto;
-		/* padding: 0 1em; */
-		/* background: white; */
-		/* box-shadow: 0 2px 8px rgba(var(--black), 5%); */
+		z-index: 999;
+		position: sticky;
+		top: 0;
+		left: 0;
+		margin: 0 auto;
+		padding: .35em 2em;
+		background: rgb(2,47,131);
+		background: linear-gradient(170deg, rgba(2,47,131,1) 0%, rgba(0,114,219,1) 100%);
+		color: #FEFEFE;
+		box-shadow: 0 2px 8px rgba(var(--black), 50%);
 	}
 	h2 {
+		color: #FFF;
 		margin: 0;
 		font-size: 1.4em;
 		width: 50%;
@@ -77,26 +83,17 @@ import { SITE_TITLE } from '../consts';
 	nav a {
 		padding: .6em 0.5em;
 		color: var(--black);
-		border-bottom: 4px solid transparent;
+		/* border-bottom: 4px solid transparent; */
 		text-decoration: none;
 		transition: color 200ms;
 		&:hover:not(.active) {
-			color: var(--accent);
-		}
-	}
-	#logo {
-		padding-inline: 0;
-
-		img {
-			margin-right: .2em;
-			object-fit: contain;
-			max-height: 42px;
+			color: var(--accent-light);
 		}
 	}
 
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		/* border-bottom-color: var(--gray); */
 	}
 	.social-links,
 	.social-links a {
