@@ -4,37 +4,37 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const latest = posts.splice(0, 3)
+// const latest = posts.splice(0, 3)
 
 ---
 
 	<section class="latest_news">
 	    <article class="latest">
-			<a href=`/blog/${latest[0].slug}`>
-				<img src={latest[0].data.heroImage} alt={latest[0].data.title}>
-				<h2>{latest[0].data.title}</h2>
-				<p>{latest[0].data.description}</p>
+			<a href=`/blog/${posts[0].slug}`>
+				<img src={posts[0].data.heroImage} alt={posts[0].data.title}>
+				<h2>{posts[0].data.title}</h2>
+				<p>{posts[0].data.description}</p>
 				<hr>
-				<span><time datetime=`${latest[0].data.pubDate}`>{latest[0].data.pubDate.toLocaleDateString()}</time></span>
+				<span><time datetime=`${posts[0].data.pubDate}`>{posts[0].data.pubDate.toLocaleDateString()}</time></span>
 			</a>
 			<!-- <a href="/blog">Ver más →</a> -->
 		</article>
 		<article class="second-latest">
-			<a href=`/blog/${latest[1].slug}`>
-				<img src={latest[1].data.heroImage} alt={latest[1].data.title}>
-				<h3>{latest[1].data.title}</h3>
-				<p>{latest[1].data.description}</p>
+			<a href=`/blog/${posts[1].slug}`>
+				<img src={posts[1].data.heroImage} alt={posts[1].data.title}>
+				<h3>{posts[1].data.title}</h3>
+				<p>{posts[1].data.description}</p>
 				<hr>
-				<span><time datetime=`${latest[1].data.pubDate}`>{latest[1].data.pubDate.toLocaleDateString()}</time></span>
+				<span><time datetime=`${posts[1].data.pubDate}`>{posts[1].data.pubDate.toLocaleDateString()}</time></span>
 			</a>
 		</article>
 		<article class="third-latest">
-			<a href=`/blog/${latest[2].slug}`>
-				<img src={latest[2].data.heroImage} alt={latest[2].data.title}>
-				<h3>{latest[2].data.title}</h3>
-				<p>{latest[2].data.description}</p>
+			<a href=`/blog/${posts[2].slug}`>
+				<img src={posts[2].data.heroImage} alt={posts[2].data.title}>
+				<h3>{posts[2].data.title}</h3>
+				<p>{posts[2].data.description}</p>
 				<hr>
-				<span><time datetime=`${latest[2].data.pubDate}`>{latest[2].data.pubDate.toLocaleDateString()}</time></span>
+				<span><time datetime=`${posts[2].data.pubDate}`>{posts[2].data.pubDate.toLocaleDateString()}</time></span>
 			</a>
 		</article>
 	</section>
